@@ -1,3 +1,4 @@
+<?php include "../includes/db.php" ?>
 <head>
 
     <meta charset="utf-8">
