@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php include "includes/head.php" ?>
+<?php include "includes/admin_head.php" ?>
 
 <body>
 
@@ -9,9 +9,9 @@
 
         <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <?php include "includes/navbar.php" ?>
+            <?php include "includes/admin_navbar.php" ?>
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-            <?php include "includes/sidebar.php" ?>
+            <?php include "includes/admin_sidebar.php" ?>
             <!-- /.navbar-collapse -->
         </nav>
 

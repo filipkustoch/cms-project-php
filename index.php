@@ -18,7 +18,7 @@ include "includes/head.php"; ?>
         </div>
     </header>
     <!-- Page content-->
-    <div class="container">
+    <div class="container ">
         <div class="row">
             <!-- Blog entries-->
             <div class="col-md-8">

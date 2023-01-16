@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php include "includes/head.php" ?>
+<?php include "includes/admin_head.php" ?>
 
 <body>
 
@@ -9,9 +9,9 @@
 
         <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <?php include "includes/navbar.php" ?>
+            <?php include "includes/admin_navbar.php" ?>
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-            <?php include "includes/sidebar.php" ?>
+            <?php include "includes/admin_sidebar.php" ?>
             <!-- /.navbar-collapse -->
         </nav>
 
@@ -27,36 +27,57 @@
                             <small>Author</small>
                         </h1>
                         <div class="col-xs-6">
-                            <form action="">
+
+                            <?php insert_category(); ?>
+
+                            <form action="" method="post">
                                 <div class="form-group">
                                     <label for="cat_title">Category Title</label>
                                     <input class="form-control" type="text" name="cat_title">
                                 </div>
                                 <div class="form-group">
-                                    <input class="btn btn-primary" type="submit" value="Add Category" name="submit" >
+                                    <input class="btn btn-primary" type="submit" value="Add Category" name="submit">
                                 </div>
                             </form>
-                        </div>
 
+                            <?php
+                            if (isset($_GET['edit'])) {
+                                include "includes/edit_categories.php";
+                            }
+                            ?>
+
+                        </div>
+                        <div class="col-xs-6">
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Title</th>
+                                        <th>Delete</th>
+                                        <th>Edit</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    draw_table();
+                                    delete_category();
+                                    ?>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
                 <!-- /.row -->
-
             </div>
             <!-- /.container-fluid -->
-
         </div>
         <!-- /#page-wrapper -->
-
     </div>
     <!-- /#wrapper -->
-
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
-
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-
 </body>
 
 </html>
