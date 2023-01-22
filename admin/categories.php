@@ -23,8 +23,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Welcome to Admin
-                            <small>Author</small>
+                            List of Categories
                         </h1>
                         <div class="col-xs-6">
 
@@ -59,7 +58,7 @@
                                 </thead>
                                 <tbody>
                                     <?php
-                                    draw_table();
+                                    draw_table_categories();
                                     delete_category();
                                     ?>
                                 </tbody>

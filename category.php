@@ -23,7 +23,15 @@ include "includes/head.php"; ?>
             <!-- Blog entries-->
             <div class="col-md-8">
                 <?php
-                $query = "SELECT * FROM posts";
+                if(isset($_GET['cat'])){
+                    $post_category = $_GET['cat'];
+                }
+
+
+
+
+
+                $query = "SELECT * FROM posts WHERE category_id = $post_category";
                 $select_all_posts_query = mysqli_query($connection, $query);
 
                 while ($row = mysqli_fetch_assoc($select_all_posts_query)) {

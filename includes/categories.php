@@ -10,8 +10,9 @@
                 <ul class="list-unstyled mb-0">
 
                     <?php while ($row = mysqli_fetch_assoc($select_all_categories_query)) {
+                        $cat_id = $row['id'];
                         $cat_title = $row['title']; ?>
-                        <li><a href="#!"><?php echo $cat_title ?></a></li>
+                        <li><a href="category.php?cat=<?php echo $cat_id ?>"><?php echo $cat_title ?></a></li>
                     <?php } ?>
                 </ul>
             </div>
