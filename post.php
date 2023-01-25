@@ -66,8 +66,34 @@ include "includes/head.php"; ?>
                 <section class="mb-5">
                     <div class="card bg-light">
                         <div class="card-body">
-                            <!-- Comment form-->
-                            <form class="mb-4"><textarea class="form-control" rows="3" placeholder="Join the discussion and leave a comment!"></textarea></form>
+                            
+                        
+                        
+                        
+                        <?php
+                        if(isset($_POST['create_comment'])){
+                           $comment_author = $_POST['comment_author'];
+                           echo $comment_email = $_POST['comment_email'];
+                        }
+                        
+                        ?>
+                        
+                        
+                        
+                        <!-- Comment form-->
+                            <form action="" method="post" class="mb-4">
+                                <div class="form-group">
+                                    <input type="text" name="comment_author" class="form-control"
+                                    placeholder="Author">
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" name="comment_email" class="form-control" placeholder="Email">
+                                </div>
+                                <div class="form-group">
+                                    <textarea class="form-control" rows="3" placeholder="Join the discussion and leave a comment!"></textarea>
+                                </div>
+                                <button type="submit" name="create_comment" class="btn btn-primary">Submit</button>
+                            </form>
                             <!-- Comment with nested comments-->
                             <div class="d-flex mb-4">
                                 <!-- Parent comment-->
