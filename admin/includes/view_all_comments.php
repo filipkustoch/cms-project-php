@@ -19,4 +19,8 @@
     </tbody>
 </table>
 
-<?php delete_comment();?>
+<?php
+approve_comment();
+disapprove_comment();
+delete_comment();
+?>

@@ -81,7 +81,7 @@ function draw_table_comments()
             $post_title = $row['title'];
         }
 
-        echo "<tr><td>$comment_id</td><td><a href='../post.php?p_id=$comment_post_id'>$post_title</a></td><td>$comment_author</td><td>$comment_email</td><td>$comment_content</td><td>$comment_status</td><td>$comment_date</td><td><a href=''>Approve</a></td><td><a href=''>Disapprove</a></td><td><a href=''>Edit</a></td><td><a href='?delete=$comment_id'>Delete</a></td></tr>";
+        echo "<tr><td>$comment_id</td><td><a href='../post.php?p_id=$comment_post_id'>$post_title</a></td><td>$comment_author</td><td>$comment_email</td><td>$comment_content</td><td>$comment_status</td><td>$comment_date</td><td><a href='?approve=$comment_id'>Approve</a></td><td><a href='?disapprove=$comment_id'>Disapprove</a></td><td><a href=''>Edit</a></td><td><a href='?delete=$comment_id'>Delete</a></td></tr>";
     }
 }
 
@@ -103,6 +103,26 @@ function delete_comment()
     if(isset($_GET['delete'])){
         $comment_delete_id = $_GET['delete'];
         $query = "DELETE FROM comments WHERE id = $comment_delete_id";
+        mysqli_query($connection, $query);
+        header("Location: comments.php");
+    }
+}
+
+function approve_comment(){
+    global $connection;
+    if(isset($_GET['approve'])){
+        $comment_approve_id = $_GET['approve'];
+        $query = "UPDATE comments SET `status` = 'approved' WHERE id = $comment_approve_id";
+        mysqli_query($connection, $query);
+        header("Location: comments.php");
+    }
+}
+
+function disapprove_comment(){
+    global $connection;
+    if(isset($_GET['disapprove'])){
+        $comment_disapprove_id = $_GET['disapprove'];
+        $query = "UPDATE comments SET `status` = 'disapproved' WHERE id = $comment_disapprove_id";
         mysqli_query($connection, $query);
         header("Location: comments.php");
     }
