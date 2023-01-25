@@ -56,10 +56,6 @@ function draw_table_posts()
             $cat_title = $row['title'];
         }
 
-
-
-
-
         echo "<tr><td>$post_id</td><td>$cat_title</td><td>$post_title</td><td>$post_author</td><td>$post_date</td><td><img class='img-responsive' src='../images/$post_image'></td><td>$post_content</td><td>$post_category</td><td>$post_comments</td><td>$post_status</td><td><a href='posts.php?source=edit_post&p_id=$post_id'>Edit</a></td><td><a href='posts.php?delete=$post_id'>Delete</a></td></tr>";
     }
 }
@@ -85,7 +81,7 @@ function draw_table_comments()
             $post_title = $row['title'];
         }
 
-        echo "<tr><td>$comment_id</td><td><a href='../post.php?p_id=$comment_post_id'>$post_title</a></td><td>$comment_author</td><td>$comment_email</td><td>$comment_content</td><td>$comment_status</td><td>$comment_date</td><td><a href=''>Approve</a></td><td><a href=''>Disapprove</a></td><td><a href=''>Edit</a></td><td><a href=''>Delete</a></td></tr>";
+        echo "<tr><td>$comment_id</td><td><a href='../post.php?p_id=$comment_post_id'>$post_title</a></td><td>$comment_author</td><td>$comment_email</td><td>$comment_content</td><td>$comment_status</td><td>$comment_date</td><td><a href=''>Approve</a></td><td><a href=''>Disapprove</a></td><td><a href=''>Edit</a></td><td><a href='?delete=$comment_id'>Delete</a></td></tr>";
     }
 }
 
@@ -94,9 +90,20 @@ function delete_category()
 {
     global $connection;
     if (isset($_GET['delete'])) {
-        $cat_delete_id = $_GET['delete'];
-        $query = "DELETE FROM categories WHERE id= {$cat_delete_id}";
+        $comment_delete_id = $_GET['delete'];
+        $query = "DELETE FROM categories WHERE id= {$comment_delete_id}";
         mysqli_query($connection, $query);
-        header("Location: categories.php");
+        header("Location: comments.php");
+    }
+}
+
+function delete_comment()
+{
+    global $connection;
+    if(isset($_GET['delete'])){
+        $comment_delete_id = $_GET['delete'];
+        $query = "DELETE FROM comments WHERE id = $comment_delete_id";
+        mysqli_query($connection, $query);
+        header("Location: comments.php");
     }
 }

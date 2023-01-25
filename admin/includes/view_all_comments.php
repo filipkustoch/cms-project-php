@@ -19,13 +19,4 @@
     </tbody>
 </table>
 
-<?php
-
-if(isset($_GET['delete'])){
-    $comment_delete_id = $_GET['delete'];
-    $query = "DELETE FROM comments WHERE id = $comment_delete_id";
-    mysqli_query($connection, $query);
-    header("Location: comments.php");
-}
-
-?>
+<?php delete_comment();?>
