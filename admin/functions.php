@@ -85,7 +85,7 @@ function draw_table_comments()
             $post_title = $row['title'];
         }
 
-        echo "<tr><td>$comment_id</td><td>$post_title</td><td>$comment_author</td><td>$comment_email</td><td>$comment_content</td><td>$comment_status</td><td>$comment_date</td><td><a href=''>Approve</a></td><td><a href=''>Disapprove</a></td><td><a href=''>Edit</a></td><td><a href=''>Delete</a></td></tr>";
+        echo "<tr><td>$comment_id</td><td><a href='../post.php?p_id=$comment_post_id'>$post_title</a></td><td>$comment_author</td><td>$comment_email</td><td>$comment_content</td><td>$comment_status</td><td>$comment_date</td><td><a href=''>Approve</a></td><td><a href=''>Disapprove</a></td><td><a href=''>Edit</a></td><td><a href=''>Delete</a></td></tr>";
     }
 }
 
