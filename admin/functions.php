@@ -100,17 +100,26 @@ function delete_category()
 function delete_comment()
 {
     global $connection;
-    if(isset($_GET['delete'])){
+    if (isset($_GET['delete'])) {
         $comment_delete_id = $_GET['delete'];
+        $query = "SELECT post_id FROM comments WHERE id = $comment_delete_id";
+        $select_post_id = mysqli_query($connection, $query);
+        while ($row = mysqli_fetch_array($select_post_id)) {
+            $post_id = $row['post_id'];
+            $query = "UPDATE `posts` SET comment_count = comment_count - 1 WHERE id = $post_id";
+            mysqli_query($connection, $query);
+        }
+
         $query = "DELETE FROM comments WHERE id = $comment_delete_id";
         mysqli_query($connection, $query);
         header("Location: comments.php");
     }
 }
 
-function approve_comment(){
+function approve_comment()
+{
     global $connection;
-    if(isset($_GET['approve'])){
+    if (isset($_GET['approve'])) {
         $comment_approve_id = $_GET['approve'];
         $query = "UPDATE comments SET `status` = 'approved' WHERE id = $comment_approve_id";
         mysqli_query($connection, $query);
@@ -118,9 +127,10 @@ function approve_comment(){
     }
 }
 
-function disapprove_comment(){
+function disapprove_comment()
+{
     global $connection;
-    if(isset($_GET['disapprove'])){
+    if (isset($_GET['disapprove'])) {
         $comment_disapprove_id = $_GET['disapprove'];
         $query = "UPDATE comments SET `status` = 'disapproved' WHERE id = $comment_disapprove_id";
         mysqli_query($connection, $query);

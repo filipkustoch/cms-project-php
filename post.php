@@ -75,6 +75,9 @@ include "includes/head.php"; ?>
                                 $post_id = $_GET['p_id'];
                                 $query = "INSERT INTO `comments` (`id`, `post_id`, `author`, `email`, `content`, `status`, `date`) VALUES (NULL, '$post_id', '$comment_author', '$comment_email', '$comment_content', 'Unapproved', now())";
                                 $add_comment_query = mysqli_query($connection, $query);
+
+                                $query = "UPDATE `posts` SET comment_count = comment_count + 1 WHERE id = $post_id";
+                                mysqli_query($connection, $query);
                             }
 
                             ?>
@@ -99,41 +102,41 @@ include "includes/head.php"; ?>
                             <?php
                             $query = "SELECT * FROM comments WHERE `post_id` = $post_id AND `status` = 'approved' ORDER BY id DESC";
                             $select_comments_query = mysqli_query($connection, $query);
-                            while($row = mysqli_fetch_array($select_comments_query)){
+                            while ($row = mysqli_fetch_array($select_comments_query)) {
                                 $comment_date = $row['date'];
                                 $comment_content = $row['content'];
-                                $comment_author = $row['author'];?>
-                            
-                            
-                            
-                            
-                            <div class="d-flex mt-4">
-                                <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
-                                <div class="ms-3">
-                                    <div class="fw-bold"><?php echo $comment_author ?><small><?php echo " " . $comment_date ?></small></div>
-                                    <?php echo $comment_content ?>
+                                $comment_author = $row['author']; ?>
+
+
+
+
+                                <div class="d-flex mt-4">
+                                    <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
+                                    <div class="ms-3">
+                                        <div class="fw-bold"><?php echo $comment_author ?><small><?php echo " " . $comment_date ?></small></div>
+                                        <?php echo $comment_content ?>
+                                    </div>
                                 </div>
-                            </div>
-                            
-                            
-                            
-                            
+
+
+
+
                             <?php
                             }
                             ?>
-                            
-
-
-
-
-                            
 
 
 
 
 
 
-                            
+
+
+
+
+
+
+
                         </div>
                     </div>
                 </section>
