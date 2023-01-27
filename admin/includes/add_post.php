@@ -6,7 +6,6 @@ if (isset($_POST['create_post'])) {
     $post_date = date('d-m-y');
     $post_content = $_POST['post_content'];
     $post_tags = $_POST['post_tags'];
-    $post_comment_count = 4;
     $post_status = $_POST['post_status'];
 
     $post_image = $_FILES['post_image']['name'];
