@@ -2,20 +2,17 @@
     <thead>
         <tr>
             <th>Id</th>
-            <th>Post</th>
-            <th>Author</th>
+            <th>Username</th>
+            <th>Password</th>
+            <th>First Name</th>
+            <th>Last Name</th>
             <th>Email</th>
-            <th>Content</th>
-            <th>Status</th>
-            <th>Date</th>
-            <th>Approve</th>
-            <th>Disapprove</th>
-            <th>Edit</th>
-            <th>Delete</th>
+            <th>Image</th>
+            <th>Role</th>
         </tr>
     </thead>
     <tbody>
-        <?php draw_table_comments(); ?>
+        <?php draw_table_users(); ?>
     </tbody>
 </table>
 

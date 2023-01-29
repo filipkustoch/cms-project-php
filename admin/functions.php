@@ -85,6 +85,31 @@ function draw_table_comments()
     }
 }
 
+function draw_table_users()
+{
+    global $connection;
+    $query = "SELECT * FROM users";
+    $select_all_comments_query = mysqli_query($connection, $query);
+
+    while ($row = mysqli_fetch_assoc($select_all_comments_query)) {
+        $comment_id = $row['id'];
+        $comment_post_id = $row['post_id'];
+        $comment_author = $row['author'];
+        $comment_email = $row['email'];
+        $comment_content = $row['content'];
+        $comment_status = $row['status'];
+        $comment_date = $row['date'];
+
+        $query_post_title = "SELECT title FROM posts WHERE id = $comment_post_id";
+        $post_title_query = mysqli_query($connection, $query_post_title);
+        while ($row = mysqli_fetch_assoc($post_title_query)) {
+            $post_title = $row['title'];
+        }
+
+        echo "<tr><td>$comment_id</td><td><a href='../post.php?p_id=$comment_post_id'>$post_title</a></td><td>$comment_author</td><td>$comment_email</td><td>$comment_content</td><td>$comment_status</td><td>$comment_date</td><td><a href='?approve=$comment_id'>Approve</a></td><td><a href='?disapprove=$comment_id'>Disapprove</a></td><td><a href=''>Edit</a></td><td><a href='?delete=$comment_id'>Delete</a></td></tr>";
+    }
+}
+
 
 function delete_category()
 {
