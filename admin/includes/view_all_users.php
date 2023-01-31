@@ -18,5 +18,5 @@
 <?php
 approve_comment();
 disapprove_comment();
-delete_comment();
+delete_user();
 ?>

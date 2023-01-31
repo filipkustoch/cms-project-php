@@ -156,3 +156,15 @@ function disapprove_comment()
         header("Location: comments.php");
     }
 }
+
+function delete_user()
+{
+    global $connection;
+    if (isset($_GET['delete'])) {
+        $user_delete_id = $_GET['delete'];
+
+        $query = "DELETE FROM users WHERE id = $user_delete_id";
+        mysqli_query($connection, $query);
+        header("Location: users.php");
+    }
+}
