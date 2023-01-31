@@ -98,10 +98,9 @@ function draw_table_users()
         $user_firstname = $row['firstname'];
         $user_lastname = $row['lastname'];
         $user_email = $row['email'];
-        $user_image = $row['image'];
         $user_role = $row['role'];
 
-        echo "<tr><td>$user_id</td><td>$user_username</td><td>$user_password</td><td>$user_firstname</td><td>$user_lastname</td><td>$user_email</td><td>$user_image</td><td>$user_role</td></tr>";
+        echo "<tr><td>$user_id</td><td>$user_username</td><td>$user_password</td><td>$user_firstname</td><td>$user_lastname</td><td>$user_email</td><td>$user_role</td><td><a href='?approve=$user_id'>Approve</a></td><td><a href='?disapprove=$user_id'>Disapprove</a></td><td><a href='?delete=$user_id'>Delete</a></td></tr>";
     }
 }
 
