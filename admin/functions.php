@@ -100,7 +100,7 @@ function draw_table_users()
         $user_email = $row['email'];
         $user_role = $row['role'];
 
-        echo "<tr><td>$user_id</td><td>$user_username</td><td>$user_password</td><td>$user_firstname</td><td>$user_lastname</td><td>$user_email</td><td>$user_role</td><td><a href='?approve=$user_id'>Approve</a></td><td><a href='?disapprove=$user_id'>Disapprove</a></td><td><a href='?delete=$user_id'>Delete</a></td></tr>";
+        echo "<tr><td>$user_id</td><td>$user_username</td><td>$user_password</td><td>$user_firstname</td><td>$user_lastname</td><td>$user_email</td><td>$user_role</td><td><a href='?changeToUser=$user_id'>User</a></td><td><a href='?changeToAdmin=$user_id'>Admin</a></td><td><a href='?delete=$user_id'>Delete</a></td></tr>";
     }
 }
 
@@ -164,6 +164,28 @@ function delete_user()
         $user_delete_id = $_GET['delete'];
 
         $query = "DELETE FROM users WHERE id = $user_delete_id";
+        mysqli_query($connection, $query);
+        header("Location: users.php");
+    }
+}
+
+function change_role_to_admin()
+{
+    global $connection;
+    if (isset($_GET['changeToAdmin'])) {
+        $change_user_id = $_GET['changeToAdmin'];
+        $query = "UPDATE users SET `role` = 'admin' WHERE id = $change_user_id";
+        mysqli_query($connection, $query);
+        header("Location: users.php");
+    }
+}
+
+function change_role_to_user()
+{
+    global $connection;
+    if (isset($_GET['changeToUser'])) {
+        $change_user_id = $_GET['changeToUser'];
+        $query = "UPDATE users SET `role` = 'user' WHERE id = $change_user_id";
         mysqli_query($connection, $query);
         header("Location: users.php");
     }

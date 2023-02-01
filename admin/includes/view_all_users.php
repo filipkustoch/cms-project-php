@@ -8,6 +8,8 @@
             <th>Last Name</th>
             <th>Email</th>
             <th>Role</th>
+            <th colspan="2">Change to</th>
+            <th>Delete</th>
         </tr>
     </thead>
     <tbody>
@@ -16,7 +18,7 @@
 </table>
 
 <?php
-approve_comment();
-disapprove_comment();
+change_role_to_admin();
+change_role_to_user();
 delete_user();
 ?>
