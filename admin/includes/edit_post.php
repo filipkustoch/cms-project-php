@@ -48,7 +48,7 @@ while ($row = mysqli_fetch_assoc($select_post_by_id)) {
             <input type="text" class="form-control" name="post_status" value="<?php echo $post_status ?>">
         </div>
         <div class="form-group">
-            <label for="post_image">Post Image (View of actual image)</label>
+            <label for="post_image">Post Image (View of current image)</label>
             <img class='img-responsive' src='../images/<?php echo $post_image ?>'>
             <input type="file" class="form-control" name="post_image">
         </div>

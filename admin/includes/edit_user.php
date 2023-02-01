@@ -1,98 +1,70 @@
 <?php
+$user_id_query = $_GET['user_id'];
+$query = "SELECT * FROM users WHERE id = $user_id_query";
+$select_user_by_id = mysqli_query($connection, $query);
 
-$post_id_query = $_GET['p_id'];
-$query = "SELECT * FROM posts WHERE id = $post_id_query";
-$select_post_by_id = mysqli_query($connection, $query);
-
-while ($row = mysqli_fetch_assoc($select_post_by_id)) {
-    $post_cat_id = $row['category_id'];
-    $post_title = $row['title'];
-    $post_author = $row['author'];
-    $post_date = $row['date'];
-    $post_image = $row['image'];
-    $post_content = $row['content'];
-    $post_category = $row['tags'];
-    $post_comments = $row['comment_count'];
-    $post_status = $row['status']; ?>
+while ($row = mysqli_fetch_assoc($select_user_by_id)) {
+    $username = $row['username'];
+    $password = $row['password'];
+    $user_firstname = $row['firstname'];
+    $user_lastname = $row['lastname'];
+    $user_email = $row['email'];
+    $user_role = $row['role']; ?>
 
     <form action="" method="post" enctype="multipart/form-data">
         <div class="form-group">
-            <label for="post_title">Post Title</label>
-            <input type="text" class="form-control" name="post_title" value="<?php echo $post_title ?>">
-        </div>
-        <div class="form-group">
-            <label for="post_category">Post Category ID</label><br>
-            <select name="post_category" id="post_category">
+            <label for="user_role">Role</label><br>
+            <select name="user_role" id="user_role">
+                <option value="<?php echo $user_role ?>"><?php echo $user_role ?></option>
 
                 <?php
-                $query = "SELECT * FROM categories";
-                $select_categories = mysqli_query($connection, $query);
-                while ($row = mysqli_fetch_assoc($select_categories)) {
-                    $cat_id = $row['id'];
-                    $cat_title = $row['title']; ?>
-
-                    <option value="<?php echo $cat_id ?>"><?php echo $cat_title ?></option>
-                <?php
+                if ($user_role == 'admin') {
+                    echo '<option value="user">User</option>';
+                } else if ($user_role == 'user') {
+                    echo '<option value="admin">Admin</option>';
                 }
                 ?>
-
             </select>
-
         </div>
         <div class="form-group">
-            <label for="post_author">Post Author</label>
-            <input type="text" class="form-control" name="post_author" value="<?php echo $post_author ?>">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" name="username" value="<?php echo $username ?>">
         </div>
         <div class="form-group">
-            <label for="post_status">Post Status</label>
-            <input type="text" class="form-control" name="post_status" value="<?php echo $post_status ?>">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" name="password" value="<?php echo $password ?>">
         </div>
         <div class="form-group">
-            <label for="post_image">Post Image (View of actual image)</label>
-            <img class='img-responsive' src='../images/<?php echo $post_image ?>'>
-            <input type="file" class="form-control" name="post_image">
+            <label for="user_firstname">First Name</label>
+            <input type="text" class="form-control" name="user_firstname" value="<?php echo $user_firstname ?>">
         </div>
         <div class="form-group">
-            <label for="post_tags">Post Tags</label>
-            <input type="text" class="form-control" name="post_tags" value="<?php echo $post_category ?>">
+            <label for="user_lastname">Last Name</label>
+            <input type="text" class="form-control" name="user_lastname" value="<?php echo $user_lastname ?>">
         </div>
         <div class="form-group">
-            <label for="post_content">Post Content</label>
-            <textarea class="form-control" name="post_content" cols="30" rows="10"><?php echo $post_content ?></textarea>
+            <label for="user_email">Email</label>
+            <input type="email" class="form-control" name="user_email" value="<?php echo $user_email ?>">
         </div>
         <div class="form-group">
-            <input type="submit" value="Publish Post" class="btn btn-primary" name="update_post">
+            <input type="submit" value="Add User" class="btn btn-primary" name="edit_user">
         </div>
     </form>
+
 <?php
 }
 ?>
 
 <?php
-if (isset($_POST['update_post'])) {
-    $cat_edit_id = $_GET['p_id'];
-    $post_title = $_POST['post_title'];
-    $post_category_id = $_POST['post_category'];
-    $post_author = $_POST['post_author'];
-    $post_status = $_POST['post_status'];
-    $post_tags = $_POST['post_tags'];
-    $post_content = $_POST['post_content'];
-    $post_date = date('d-m-y');
-    $post_comment_count = 4;
-    $post_image = $_FILES['post_image']['name'];
-    $post_image_temp = $_FILES['post_image']['tmp_name'];
+if (isset($_POST['edit_user'])) {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $user_firstname = $_POST['user_firstname'];
+    $user_lastname = $_POST['user_lastname'];
+    $user_email = $_POST['user_email'];
+    $user_role = $_POST['user_role'];
 
-    if(empty($post_image)){
-        $query = "SELECT * FROM posts WHERE id = $cat_edit_id";
-        $select_image = mysqli_query($connection, $query);
-        while($row = mysqli_fetch_array($select_image)){
-            $post_image = $row['image'];
-        }
-    }
-
-    move_uploaded_file($post_image_temp, "../images/$post_image");
-
-    $query = "UPDATE posts SET `title` = '{$post_title}', `category_id` = '{$post_category_id}', `author` = '{$post_author}', `status` = '{$post_status}', `tags` = '{$post_tags}',`content` = '{$post_content}', `date` = now(), `comment_count` = '{$post_comment_count}', `image` = '{$post_image}' WHERE id = $cat_edit_id";
+    $query = "UPDATE users SET `username` = '{$username}', `password` = '{$password}', `firstname` = '{$user_firstname}', `lastname` = '{$user_lastname}', `email` = '{$user_email}', `role` = '{$user_role}' WHERE id = $user_id_query";
 
     mysqli_query($connection, $query);
     header("Location: users.php");
