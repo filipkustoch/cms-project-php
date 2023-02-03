@@ -16,7 +16,7 @@
     <div class="card-header">Login</div>
     <form action="includes/login.php" method="post">
         <div class="card-body">
-            <div class="input-groupe">
+            <div class="input-group">
                 <input class="form-control" type="text" name="username" placeholder="Username"/>
             </div>
             <div class="input-group">
