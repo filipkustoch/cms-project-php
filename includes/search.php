@@ -22,7 +22,7 @@
             <div class="input-group">
                 <input class="form-control" type="password" name="password" placeholder="Password" />
                 <span class="input-group-btn">
-                    <button class="btn btn-primary" id="button-search" type="submit" name="submit">Login</button>
+                    <button class="btn btn-primary" id="button-search" type="submit" name="login">Login</button>
                 </span>
             </div>
 
