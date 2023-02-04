@@ -16,13 +16,16 @@
     <div class="card-header">Login</div>
     <form action="includes/login.php" method="post">
         <div class="card-body">
-            <div class="input-group">
-                <input class="form-control" type="text" name="username" placeholder="Username"/>
+            <div class="form-group mb-3">
+                <input class="form-control" type="text" name="username" placeholder="Username" />
             </div>
             <div class="input-group">
-                <input class="form-control" type="password" name="password" placeholder="Password"/>
+                <input class="form-control" type="password" name="password" placeholder="Password" />
+                <span class="input-group-btn">
+                    <button class="btn btn-primary" id="button-search" type="submit" name="submit">Login</button>
+                </span>
             </div>
-            <button class="btn btn-primary" id="button-search" type="submit" name="submit">Login</button>
+
         </div>
     </form>
 </div>
