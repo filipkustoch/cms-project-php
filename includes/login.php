@@ -1,5 +1,5 @@
 <?php include "db.php"; ?>
-
+<?php session_start(); ?>
 
 <?php
 if (isset($_POST['login'])) {
@@ -15,6 +15,10 @@ if (isset($_POST['login'])) {
     if ($username !== $user_username && $password !== $user_password) {
         header("Location: ../index.php");
     } else if ($username === $user_username && $password === $user_password){
+
+        $_SESSION['username'] = $user_username;
+        $_SESSION['password'] = $user_password;
+
         header("Location: ../admin");
     }
 }
