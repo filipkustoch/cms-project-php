@@ -74,7 +74,7 @@
                                     <input type="email" class="form-control" name="user_email" value="<?php echo $user_email ?>">
                                 </div>
                                 <div class="form-group">
-                                    <input type="submit" value="Add User" class="btn btn-primary" name="edit_user">
+                                    <input type="submit" value="Edit User" class="btn btn-primary" name="edit_user">
                                 </div>
                             </form>
 
@@ -94,7 +94,7 @@
                             $query = "UPDATE users SET `username` = '{$username}', `password` = '{$password}', `firstname` = '{$user_firstname}', `lastname` = '{$user_lastname}', `email` = '{$user_email}', `role` = '{$user_role}' WHERE id = $user_id_query";
 
                             mysqli_query($connection, $query);
-                            header("Location: users.php");
+                            header("Location: profile.php");
                         }
                         ?>
                     </div>
