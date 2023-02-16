@@ -100,7 +100,7 @@ function draw_table_users()
         $user_email = $row['email'];
         $user_role = $row['role'];
 
-        echo "<tr><td>$user_id</td><td>$user_username</td><td>$user_password</td><td>$user_firstname</td><td>$user_lastname</td><td>$user_email</td><td>$user_role</td><td><a href='?changeToUser=$user_id'>User</a></td><td><a href='?changeToAdmin=$user_id'>Admin</a></td><td><a href='?delete=$user_id'>Delete</a></td><td><a href='users.php?source=edit_user&user_id=$user_id'>Edit</a></td></tr>"; 
+        echo "<tr><td>$user_id</td><td>$user_username</td><td>$user_password</td><td>$user_firstname</td><td>$user_lastname</td><td>$user_email</td><td>$user_role</td><td><a href='?changeToUser=$user_id'>User</a></td><td><a href='?changeToAdmin=$user_id'>Admin</a></td><td><a href='?delete=$user_id'>Delete</a></td><td><a href='users.php?source=edit_user&user_id=$user_id'>Edit</a></td></tr>";
     }
 }
 
@@ -189,4 +189,12 @@ function change_role_to_user()
         mysqli_query($connection, $query);
         header("Location: users.php");
     }
+}
+
+function widget_counter($table)
+{
+    global $connection;
+    $query = "SELECT * FROM $table";
+    $select_all_posts = mysqli_query($connection, $query);
+    echo mysqli_num_rows($select_all_posts);
 }

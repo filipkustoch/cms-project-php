@@ -40,11 +40,7 @@
                                     </div>
                                     <div class="col-xs-9 text-right">
                                         <div class='huge'>
-                                            <?php
-                                            $query = "SELECT * FROM posts";
-                                            $select_all_posts = mysqli_query($connection, $query);
-                                            echo mysqli_num_rows($select_all_posts);
-                                            ?>
+                                            <?php widget_counter("posts"); ?>
                                         </div>
                                         <div>Posts</div>
                                     </div>
@@ -68,11 +64,7 @@
                                     </div>
                                     <div class="col-xs-9 text-right">
                                         <div class='huge'>
-                                            <?php
-                                            $query = "SELECT * FROM comments";
-                                            $select_all_posts = mysqli_query($connection, $query);
-                                            echo mysqli_num_rows($select_all_posts);
-                                            ?>
+                                            <?php widget_counter("comments"); ?>
                                         </div>
                                         <div>Comments</div>
                                     </div>
@@ -96,11 +88,7 @@
                                     </div>
                                     <div class="col-xs-9 text-right">
                                         <div class='huge'>
-                                            <?php
-                                            $query = "SELECT * FROM users";
-                                            $select_all_posts = mysqli_query($connection, $query);
-                                            echo mysqli_num_rows($select_all_posts);
-                                            ?>
+                                            <?php widget_counter("users"); ?>
                                         </div>
                                         <div> Users</div>
                                     </div>
@@ -124,11 +112,7 @@
                                     </div>
                                     <div class="col-xs-9 text-right">
                                         <div class='huge'>
-                                            <?php
-                                            $query = "SELECT * FROM categories";
-                                            $select_all_posts = mysqli_query($connection, $query);
-                                            echo mysqli_num_rows($select_all_posts);
-                                            ?>
+                                            <?php widget_counter("categories"); ?>
                                         </div>
                                         <div>Categories</div>
                                     </div>
