@@ -58,4 +58,9 @@ if (isset($_POST['create_user'])) {
     <div class="form-group">
         <input type="submit" value="Add User" class="btn btn-primary" name="create_user">
     </div>
+    <?php
+    if (isset($_POST['create_user'])) {
+        echo "<h2>User added!</h2>";
+    }
+    ?>
 </form>
