@@ -196,5 +196,5 @@ function widget_counter($table)
     global $connection;
     $query = "SELECT * FROM $table";
     $select_all_posts = mysqli_query($connection, $query);
-    echo mysqli_num_rows($select_all_posts);
+    return mysqli_num_rows($select_all_posts);
 }

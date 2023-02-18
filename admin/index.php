@@ -40,7 +40,7 @@
                                     </div>
                                     <div class="col-xs-9 text-right">
                                         <div class='huge'>
-                                            <?php widget_counter("posts"); ?>
+                                            <?php echo widget_counter("posts"); ?>
                                         </div>
                                         <div>Posts</div>
                                     </div>
@@ -64,7 +64,7 @@
                                     </div>
                                     <div class="col-xs-9 text-right">
                                         <div class='huge'>
-                                            <?php widget_counter("comments"); ?>
+                                            <?php echo widget_counter("comments"); ?>
                                         </div>
                                         <div>Comments</div>
                                     </div>
@@ -88,7 +88,7 @@
                                     </div>
                                     <div class="col-xs-9 text-right">
                                         <div class='huge'>
-                                            <?php widget_counter("users"); ?>
+                                            <?php echo widget_counter("users"); ?>
                                         </div>
                                         <div> Users</div>
                                     </div>
@@ -112,7 +112,7 @@
                                     </div>
                                     <div class="col-xs-9 text-right">
                                         <div class='huge'>
-                                            <?php widget_counter("categories"); ?>
+                                            <?php echo widget_counter("categories"); ?>
                                         </div>
                                         <div>Categories</div>
                                     </div>
@@ -138,13 +138,17 @@
 
                         function drawChart() {
                             var data = google.visualization.arrayToDataTable([
-                                ['Year', 'Sales'],
-                                <?php 
-                                
-                                $text_element = ['Posts','Comments','Users','Categories'];
+                                ['Type', 'Count'],
+                                <?php
 
+                                $text_element = ['Posts', 'Comments', 'Users', 'Categories'];
+                                $count_element = [widget_counter("posts"), widget_counter("comments"), widget_counter("users"), widget_counter("categories")];
+
+                                for ($i = 0; $i < 4; $i++) {
+                                    echo "['{$text_element[$i]}'" . "," . "{$count_element[$i]}],";
+                                }
                                 ?>
-                                ['2014', 1000]
+                                // ['2014', 1000]
                             ]);
 
                             var options = {
