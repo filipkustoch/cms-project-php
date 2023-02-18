@@ -35,7 +35,7 @@ if (isset($_POST['submit'])) {
 
     $count = mysqli_num_rows($search_query);
     if ($count == 0) {
-        echo "no results found";
+        echo "<h2 style='text-align:center;'>No posts found</h2>";
     } else {
 
         while ($row = mysqli_fetch_assoc($search_query)) {
