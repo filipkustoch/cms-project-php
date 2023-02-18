@@ -39,6 +39,7 @@ if (isset($_POST['submit'])) {
     } else {
 
         while ($row = mysqli_fetch_assoc($search_query)) {
+            $post_id = $row['id'];
             $post_title = $row['title'];
             $post_date = $row['date'];
             $post_content = $row['content'];
@@ -46,12 +47,12 @@ if (isset($_POST['submit'])) {
             $post_image = $row['image']; ?>
 
             <div class='card mb-4'>
-                <a href='#!'><img class='card-img-top' src='images/<?php echo $post_image ?>' alt='...' /></a>
+                <a href='post.php?p_id=<?php echo $post_id ?>'><img class='card-img-top' src='images/<?php echo $post_image ?>' alt='...' /></a>
                 <div class='card-body'>
                     <div class='small text-muted'><?php echo $post_date ?></div>
                     <h2 class='card-title h4'><?php echo $post_title ?></h2>
                     <p class='card-text'><?php echo $post_content ?></p>
-                    <a class='btn btn-primary' href='#!'>Read more →</a>
+                    <a class='btn btn-primary' href='post.php?p_id=<?php echo $post_id ?>'>Read more →</a>
                     <p class='card-text'>@<?php echo $post_author ?></p>
                 </div>
             </div>
