@@ -129,6 +129,23 @@
                     </div>
                 </div>
                 <!-- /.row -->
+                <?php
+
+                $query = "SELECT * FROM posts WHERE status = 'draft'";
+                $select_draft_posts = mysqli_query($connection, $query);
+                $count_draft_posts = mysqli_num_rows($select_draft_posts);
+
+                $query = "SELECT * FROM comments WHERE status = 'Unapproved'";
+                $select_unapproved_comments = mysqli_query($connection, $query);
+                $count_unapproved_comments = mysqli_num_rows($select_unapproved_comments);
+
+                $query = "SELECT * FROM users WHERE role = 'user'";
+                $select_user_role = mysqli_query($connection, $query);
+                $count_user_role = mysqli_num_rows($select_user_role);
+
+                ?>
+
+
                 <div class="row">
                     <script type="text/javascript">
                         google.charts.load('current', {
@@ -140,15 +157,13 @@
                             var data = google.visualization.arrayToDataTable([
                                 ['Type', 'Count'],
                                 <?php
+                                $text_element = ['Posts', 'Draft Posts', 'Comments', 'Unapproved Comments', 'All Users', 'Normal Users', 'Categories'];
+                                $count_element = [widget_counter("posts"), $count_draft_posts, widget_counter("comments"),$count_unapproved_comments, widget_counter("users"), $count_user_role, widget_counter("categories")];
 
-                                $text_element = ['Posts', 'Comments', 'Users', 'Categories'];
-                                $count_element = [widget_counter("posts"), widget_counter("comments"), widget_counter("users"), widget_counter("categories")];
-
-                                for ($i = 0; $i < 4; $i++) {
+                                for ($i = 0; $i < count($text_element); $i++) {
                                     echo "['{$text_element[$i]}'" . "," . "{$count_element[$i]}],";
                                 }
                                 ?>
-                                // ['2014', 1000]
                             ]);
 
                             var options = {
