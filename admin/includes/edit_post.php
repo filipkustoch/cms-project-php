@@ -44,23 +44,20 @@ while ($row = mysqli_fetch_assoc($select_post_by_id)) {
             <input type="text" class="form-control" name="post_author" value="<?php echo $post_author ?>">
         </div>
         <div class="form-group">
-            <label for="post_status">Post Category ID</label><br>
+            <label for="post_status">Post Status</label><br>
             <select name="post_status" id="post_status">
-
                 <?php
-                $query = "SELECT * FROM categories";
-                $select_categories = mysqli_query($connection, $query);
-                while ($row = mysqli_fetch_assoc($select_categories)) {
-                    $cat_id = $row['id'];
-                    $cat_title = $row['title']; ?>
-
-                    <option value="<?php echo $cat_id ?>"><?php echo $cat_title ?></option>
-                <?php
+                if ($post_status == 'published') {
+                    echo "<option value='published'>Published</option>
+                <option value='draft'>Draft</option>";
+                } else {
+                    echo "<option value='draft'>Draft</option>
+                <option value='published'>Published</option>";
                 }
+
+
                 ?>
-
             </select>
-
         </div>
         <div class="form-group">
             <label for="post_image">Post Image (View of current image)</label>
@@ -97,10 +94,10 @@ if (isset($_POST['update_post'])) {
     $post_image = $_FILES['post_image']['name'];
     $post_image_temp = $_FILES['post_image']['tmp_name'];
 
-    if(empty($post_image)){
+    if (empty($post_image)) {
         $query = "SELECT * FROM posts WHERE id = $cat_edit_id";
         $select_image = mysqli_query($connection, $query);
-        while($row = mysqli_fetch_array($select_image)){
+        while ($row = mysqli_fetch_array($select_image)) {
             $post_image = $row['image'];
         }
     }
