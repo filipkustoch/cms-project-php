@@ -54,8 +54,6 @@ while ($row = mysqli_fetch_assoc($select_post_by_id)) {
                     echo "<option value='draft'>Draft</option>
                 <option value='published'>Published</option>";
                 }
-
-
                 ?>
             </select>
         </div>
