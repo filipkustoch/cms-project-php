@@ -32,5 +32,4 @@ if (!($_SESSION['role'] == "admin")) {
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
     <link href="css/summernote.css" rel="stylesheet">
-
 </head>
