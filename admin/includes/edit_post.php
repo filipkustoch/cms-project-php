@@ -1,4 +1,11 @@
 <?php
+$post_id_query = $_GET['p_id'];
+$query = "SELECT * FROM posts WHERE id = $post_id_query";
+$select_post_by_id = mysqli_query($connection, $query);
+
+if (isset($_POST['update_post'])) {
+    echo "<p class='bg-success'>Post Updated. <a href='../post.php?p_id={$post_id_query}'>View post </a> or <a href='posts.php'> Edit More Posts</a>";
+}
 
 $post_id_query = $_GET['p_id'];
 $query = "SELECT * FROM posts WHERE id = $post_id_query";
@@ -105,6 +112,5 @@ if (isset($_POST['update_post'])) {
     $query = "UPDATE posts SET `title` = '{$post_title}', `category_id` = '{$post_category_id}', `author` = '{$post_author}', `status` = '{$post_status}', `tags` = '{$post_tags}',`content` = '{$post_content}', `date` = now(), `comment_count` = '{$post_comment_count}', `image` = '{$post_image}' WHERE id = $cat_edit_id";
 
     mysqli_query($connection, $query);
-    header("Location: posts.php");
 }
 ?>
