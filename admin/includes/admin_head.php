@@ -3,11 +3,12 @@
 <?php include "../includes/db.php" ?>
 <?php include "functions.php" ?>
 
-<?php 
-if (!($_SESSION['role'] == "admin")){
-        header("Location: ../index.php");
+<?php
+if (!($_SESSION['role'] == "admin")) {
+    header("Location: ../index.php");
 }
 ?>
+
 <head>
 
     <meta charset="utf-8">
@@ -29,4 +30,7 @@ if (!($_SESSION['role'] == "admin")){
 
     <!-- Google charts -->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <link href="css/summernote.css" rel="stylesheet">
+
 </head>
