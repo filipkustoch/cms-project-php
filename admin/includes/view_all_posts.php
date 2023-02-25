@@ -2,7 +2,9 @@
 
 if(isset($_POST['checkBoxArray'])){
 
-    echo "Data";
+    foreach($_POST['checkBoxArray'] as $checkBoxValue){
+        echo $checkBoxValue;
+    }
 
 }
 
