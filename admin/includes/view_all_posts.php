@@ -1,11 +1,22 @@
-<?php 
+<?php
 
-if(isset($_POST['checkBoxArray'])){
+if (isset($_POST['checkBoxArray'])) {
 
-    foreach($_POST['checkBoxArray'] as $checkBoxValue){
+    foreach ($_POST['checkBoxArray'] as $checkBoxValue) {
         $bulkOptions = $_POST['bulkOptions'];
-    }
 
+        #switch $bulkOptions
+        switch ($bulkOptions) {
+            case 'published':
+                break;
+            case 'draft':
+                break;
+            case 'delete':
+                break;
+            default:
+                break;
+        }
+    }
 }
 
 ?>
@@ -15,9 +26,9 @@ if(isset($_POST['checkBoxArray'])){
         <div id="bulkOptionsContainer" class="col-xs-3">
             <select class="form-control" name="bulkOptions" id="">
                 <option value="">Select Options</option>
-                <option value="">Publish</option>
-                <option value="">Draft</option>
-                <option value="">Delete</option>
+                <option value="published">Publish</option>
+                <option value="draft">Draft</option>
+                <option value="delete">Delete</option>
             </select>
 
         </div>
