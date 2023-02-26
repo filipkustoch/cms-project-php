@@ -12,6 +12,8 @@ if (isset($_POST['checkBoxArray'])) {
                 $publishedPost = mysqli_query($connection, $query);
                 break;
             case 'draft':
+                $query = "UPDATE posts SET status = 'draft' WHERE id = '$checkBoxValue'";
+                $publishedPost = mysqli_query($connection, $query);
                 break;
             case 'delete':
                 break;
