@@ -2,17 +2,17 @@
 
 if (isset($_POST['checkBoxArray'])) {
 
-    foreach ($_POST['checkBoxArray'] as $checkBoxValue) {
+    foreach ($_POST['checkBoxArray'] as $postId) {
         $bulkOptions = $_POST['bulkOptions'];
 
         #switch $bulkOptions
         switch ($bulkOptions) {
             case 'published':
-                $query = "UPDATE posts SET status = 'published' WHERE id = '$checkBoxValue'";
+                $query = "UPDATE posts SET status = 'published' WHERE id = '$postId'";
                 $publishedPost = mysqli_query($connection, $query);
                 break;
             case 'draft':
-                $query = "UPDATE posts SET status = 'draft' WHERE id = '$checkBoxValue'";
+                $query = "UPDATE posts SET status = 'draft' WHERE id = '$postId'";
                 $publishedPost = mysqli_query($connection, $query);
                 break;
             case 'delete':
