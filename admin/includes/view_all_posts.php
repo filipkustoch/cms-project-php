@@ -8,6 +8,8 @@ if (isset($_POST['checkBoxArray'])) {
         #switch $bulkOptions
         switch ($bulkOptions) {
             case 'published':
+                $query = "UPDATE posts SET status = 'published' WHERE id = '$checkBoxValue'";
+                $publishedPost = mysqli_query($connection, $query);
                 break;
             case 'draft':
                 break;
