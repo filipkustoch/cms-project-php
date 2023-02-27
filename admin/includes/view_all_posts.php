@@ -24,10 +24,9 @@ if (isset($_POST['checkBoxArray'])) {
         }
     }
 }
-
 ?>
 
-<form action="a" method="post">
+<form action="" method="post">
     <table class="table table-bordered table-hover">
         <div id="bulkOptionsContainer" class="col-xs-3">
             <select class="form-control" name="bulkOptions" id="">
