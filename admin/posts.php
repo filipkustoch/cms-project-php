@@ -57,6 +57,7 @@
         <!-- /#page-wrapper -->
     </div>
     <!-- /#wrapper -->
+    <script src="js/scripts.js"></script>
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
     <!-- Bootstrap Core JavaScript -->
@@ -64,7 +65,7 @@
 
     <script src="js/summernote.js"></script>
 
-    <script src="js/scripts.js"></script>
+    
 </body>
 
 </html>
