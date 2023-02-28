@@ -36,7 +36,7 @@ include "includes/head.php"; ?>
                     $post_image = $row['image']; ?>
 
                     <div class='card mb-4'>
-                        <a href='post.php?p_id=<?php echo $post_id ?>'><img class='card-img-top' src='images/<?php echo $post_image ?>' alt='...' /></a>
+                        <a href='post.php?p_id=<?php echo $post_id ?>'><img class='card-img-top post-image' src='images/<?php echo $post_image ?>' alt='...' /></a>
                         <div class='card-body'>
                             <div class='small text-muted'><?php echo $post_date ?></div>
                             <h2 class='card-title h4'><?php echo $post_title ?></h2>

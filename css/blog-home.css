@@ -11286,3 +11286,7 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+
+.post-image{
+ aspect-ratio: 8/3;
+}
