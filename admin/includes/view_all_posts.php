@@ -54,6 +54,7 @@ if (isset($_POST['checkBoxArray'])) {
                 <th>Tags</th>
                 <th>Comments</th>
                 <th>Status</th>
+                <th>View Post</th>
             </tr>
         </thead>
         <tbody>
