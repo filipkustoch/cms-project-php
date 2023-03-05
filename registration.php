@@ -2,6 +2,15 @@
 <?php include "includes/head.php"; ?>
 
 
+<?php
+
+if (isset($_POST['submit'])) {
+    echo '<script>alert("submited")</script>';
+}
+
+
+?>
+
 <!-- Navigation -->
 
 <?php include "includes/navbar.php"; ?>
