@@ -73,11 +73,16 @@ include "includes/head.php"; ?>
                                 $comment_email = $_POST['comment_email'];
                                 $comment_content = $_POST['comment_content'];
                                 $post_id = $_GET['p_id'];
-                                $query = "INSERT INTO `comments` (`id`, `post_id`, `author`, `email`, `content`, `status`, `date`) VALUES (NULL, '$post_id', '$comment_author', '$comment_email', '$comment_content', 'Unapproved', now())";
-                                $add_comment_query = mysqli_query($connection, $query);
+                                if (!empty($comment_author) && !empty($comment_email) && !empty($comment_content)) {
 
-                                $query = "UPDATE `posts` SET comment_count = comment_count + 1 WHERE id = $post_id";
-                                mysqli_query($connection, $query);
+                                    $query = "INSERT INTO `comments` (`id`, `post_id`, `author`, `email`, `content`, `status`, `date`) VALUES (NULL, '$post_id', '$comment_author', '$comment_email', '$comment_content', 'Unapproved', now())";
+                                    $add_comment_query = mysqli_query($connection, $query);
+
+                                    $query = "UPDATE `posts` SET comment_count = comment_count + 1 WHERE id = $post_id";
+                                    mysqli_query($connection, $query);
+                                } else {
+                                    echo "<script>alert('Fields cannot be empty!')</script>";
+                                }
                             }
 
                             ?>
