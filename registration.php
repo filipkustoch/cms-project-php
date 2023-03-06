@@ -1,7 +1,5 @@
 <?php include "includes/db.php"; ?>
 <?php include "includes/head.php"; ?>
-
-
 <?php
 
 if (isset($_POST['submit'])) {
@@ -12,6 +10,9 @@ if (isset($_POST['submit'])) {
     $username = mysqli_real_escape_string($connection, $username);
     $email = mysqli_real_escape_string($connection, $email);
     $password = mysqli_real_escape_string($connection, $password);
+
+    $query = "SELECT randSalt FROM users";
+    $select_randsalt_query = mysqli_query($connection, $query);
 }
 
 
