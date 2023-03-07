@@ -19,8 +19,10 @@ if (isset($_POST['submit'])) {
         $row = mysqli_fetch_array($select_randsalt_query);
         $salt = $row['randSalt'];
 
+        $password = crypt($password,  $salt);
+
         $query = "INSERT INTO users (username, email, password, role) ";
-        $query .= "VALUES ('$username', '$email', '$password', 'user')";
+        $query .= "VALUES ('$username', '$email', '{$password}', 'user')";
         $register_user_query = mysqli_query($connection, $query);
 
         $message = "Your registration has been successfully submitted";
