@@ -14,9 +14,12 @@ if (isset($_POST['submit'])) {
     $query = "SELECT randSalt FROM users";
     $select_randsalt_query = mysqli_query($connection, $query);
 
-    while ($row = mysqli_fetch_array($select_randsalt_query)){
-        $salt = $row['randSalt'];
-    }
+    $row = mysqli_fetch_array($select_randsalt_query);
+    $salt = $row['randSalt'];
+
+    $query = "INSERT INTO users (username, email, password, role) ";
+    $query .= "VALUES ('$username', '$email', '$password', 'user')";
+    $register_user_query = mysqli_query($connection, $query);
 }
 
 
