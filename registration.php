@@ -13,6 +13,10 @@ if (isset($_POST['submit'])) {
 
     $query = "SELECT randSalt FROM users";
     $select_randsalt_query = mysqli_query($connection, $query);
+
+    while ($row = mysqli_fetch_array($select_randsalt_query)){
+        $salt = $row['randSalt'];
+    }
 }
 
 
