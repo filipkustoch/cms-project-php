@@ -11,9 +11,9 @@ include "includes/head.php"; ?>
     <!-- Page header with logo and tagline-->
     <header class="py-1 bg-light border-bottom mb-4">
         <div class="container">
-            <div class="text-center my-5">
-                <h1 class="fw-bolder">Welcome to Blog Home!</h1>
-                <p class="lead mb-0">A blog about programming</p>
+            <div class="text-center my-4">
+                <h1 class="fw-bolder">Welcome to CMS Blog!</h1>
+                <p class="lead mb-0">A CMS blog made in PHP</p>
             </div>
         </div>
     </header>
