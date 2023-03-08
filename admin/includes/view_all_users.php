@@ -3,13 +3,13 @@
         <tr>
             <th>Id</th>
             <th>Username</th>
-            <th>Password</th>
             <th>First Name</th>
             <th>Last Name</th>
             <th>Email</th>
             <th>Role</th>
             <th colspan="2">Change to</th>
             <th>Delete</th>
+            <th>Edit</th>
         </tr>
     </thead>
     <tbody>

@@ -64,7 +64,14 @@ if (isset($_POST['edit_user'])) {
     $user_email = $_POST['user_email'];
     $user_role = $_POST['user_role'];
 
-    $query = "UPDATE users SET `username` = '{$username}', `password` = '{$password}', `firstname` = '{$user_firstname}', `lastname` = '{$user_lastname}', `email` = '{$user_email}', `role` = '{$user_role}' WHERE id = $user_id_query";
+    $query = "SELECT randSalt FROM users";
+    $select_randsalt_query = mysqli_query($connection,$query);
+    $row = mysqli_fetch_array($select_randsalt_query);
+    $salt = $row['randSalt'];
+    $hashed_password = crypt($password, $salt);
+
+
+    $query = "UPDATE users SET `username` = '{$username}', `password` = '{$hashed_password}', `firstname` = '{$user_firstname}', `lastname` = '{$user_lastname}', `email` = '{$user_email}', `role` = '{$user_role}' WHERE id = $user_id_query";
 
     mysqli_query($connection, $query);
     header("Location: users.php");
