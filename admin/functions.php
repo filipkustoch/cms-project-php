@@ -56,7 +56,7 @@ function draw_table_posts()
             $cat_title = $row['title'];
         }
 
-        echo "<tr><td><input type='checkbox' class='checkBoxes' name='checkBoxArray[]' value='$post_id'></td><td>$post_id</td><td>$cat_title</td><td>$post_title</td><td>$post_author</td><td>$post_date</td><td><img class='img-responsive' src='../images/$post_image'></td><td>$post_content</td><td>$post_category</td><td>$post_comments</td><td>$post_status</td><td><a href='../post.php?p_id=$post_id'>Post Link</a></td><td><a href='posts.php?source=edit_post&p_id=$post_id'>Edit</a></td><td><a href='posts.php?delete=$post_id'>Delete</a></td></tr>";
+        echo "<tr><td><input type='checkbox' class='checkBoxes' name='checkBoxArray[]' value='$post_id'></td><td>$post_id</td><td>$cat_title</td><td>$post_title</td><td>$post_author</td><td>$post_date</td><td><img class='img-responsive' src='../images/$post_image'></td><td>$post_content</td><td>$post_category</td><td>$post_comments</td><td>$post_status</td><td><a href='../post.php?p_id=$post_id'>Post Link</a></td><td><a href='posts.php?source=edit_post&p_id=$post_id'>Edit</a></td><td><a onClick=\"javascript: return confirm('Are you sure that you want to delete this item?') \" href='posts.php?delete=$post_id'>Delete</a></td></tr>";
     }
 }
 
