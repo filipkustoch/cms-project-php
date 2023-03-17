@@ -42,7 +42,7 @@ include "includes/head.php"; ?>
                             <h2 class='card-title h4'><?php echo $post_title ?></h2>
                             <p class='card-text'><?php echo $post_content ?></p>
                             <a class='btn btn-primary' href='post.php?p_id=<?php echo $post_id ?>'>Read more →</a>
-                            <p class='card-text'>@<?php echo $post_author ?></p>
+                            <p class='lead'><a href='author_posts.php?author=<?php echo $post_author ?>&p_id=<?php echo $post_id ?>' style='text-decoration: none;'>@<?php echo $post_author ?></a></p>
                         </div>
                     </div>
                 <?php }
