@@ -19,6 +19,24 @@ if (isset($_POST['checkBoxArray'])) {
                 $query = "DELETE FROM posts WHERE id = '$postId'";
                 $deletePost = mysqli_query($connection, $query);
                 break;
+            case 'clone':
+                $query = "SELECT * FROM posts WHERE id = '$postId'";
+                $clonePost = mysqli_query($connection, $query);
+
+                while ($row = mysqli_fetch_array($clonePost)) {
+                    $post_title = $row['title'];
+                    $post_category_id = $row['category_id'];
+                    $post_date = $row['date'];
+                    $post_author = $row['author'];
+                    $post_status = $row['status'];
+                    $post_image = $row['image'];
+                    $post_tags = $row['tags'];
+                    $post_content = $row['content'];
+                }
+                $query = "INSERT INTO posts (title, category_id, date, author, status, image, tags, content) ";
+                $query .= "VALUES ('{$post_title}','{$post_category_id}','{$post_date}','{$post_author}','{$post_status}','{$post_image}','{$post_tags}','{$post_content}')";
+                $copy_query = mysqli_query($connection, $query);
+                break;
             default:
                 break;
         }
@@ -34,6 +52,7 @@ if (isset($_POST['checkBoxArray'])) {
                 <option value="published">Publish</option>
                 <option value="draft">Draft</option>
                 <option value="delete">Delete</option>
+                <option value="clone">Clone</option>
             </select>
 
         </div>
