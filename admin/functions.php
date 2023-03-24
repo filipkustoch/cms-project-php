@@ -32,6 +32,7 @@ function draw_table_categories()
     }
 }
 
+// Draw table of posts function
 function draw_table_posts()
 {
     global $connection;
